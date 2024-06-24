@@ -1,0 +1,18 @@
+{
+  "id": "mig_cpsge0m0pb16a427dqrg",
+  "parentID": "mig_cps49h60pb16a427dmqg",
+  "checksum": "1:34a8bfed8ce7e14aa395f708b7edde4b4d32d5c7a426f6a77869c4f76112a989",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "userid",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "null"
+        },
+        "table": "task"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cps49h60pb16a427dmqg",
+  "parentID": "mig_cps485e0pb16a427dmpg",
+  "checksum": "1:f7e03b1aa41269ce356059191ea5db0637f6b7bfb5a1bbc47d1fb647f98dfa62",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "doitsomeday",
+          "type": "bool"
+        },
+        "table": "task"
+      }
+    }
+  ]
+}

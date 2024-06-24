@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Alex-s-workspace-2hlmmv.us-east-1.xata.sh/db/pomodorodb",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

@@ -31,3 +31,23 @@ body {
     text-wrap: balance;
   }
 }
+
+::-webkit-scrollbar {
+  width: 7px; /* Set scrollbar width */
+}
+
+/* This will change the scrollbar thumb color */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(26, 31, 38); /* Set thumb color */
+  
+}
+
+/* This will change the scrollbar track color */
+::-webkit-scrollbar-track {
+  background: white; /* Set track color */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

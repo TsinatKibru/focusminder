@@ -1,0 +1,16 @@
+{
+  "id": "mig_cps1u6m0pb16a427dlp0",
+  "parentID": "mig_cps1to77lilural97rsg",
+  "checksum": "1:2f070e0241a1a6bf5143257d2b4c90899738eabb879d5a46e59c9262cc649654",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "project",
+          "type": "string"
+        },
+        "table": "task"
+      }
+    }
+  ]
+}

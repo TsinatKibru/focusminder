@@ -1,0 +1,11 @@
+{
+  "id": "mig_cps1sum0pb16a427dlo0",
+  "checksum": "1:698bb7eb6b161f8e1215b2809f932fbf62841341e990828d338b6f1f2c6d2566",
+  "operations": [
+    {
+      "addTable": {
+        "table": "task"
+      }
+    }
+  ]
+}
