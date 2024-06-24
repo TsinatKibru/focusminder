@@ -521,6 +521,7 @@ const Tasks: React.FC<TasksProps> = ({
   const handleCancel = () => {
     console.log("Task creation canceled");
     setShowCreateTask(false); // Close the CreateTask component
+    setCurrentTasks(tasks)
   };
 
   const toggleCreateTask = () => {
@@ -556,7 +557,7 @@ const Tasks: React.FC<TasksProps> = ({
 
   useEffect(()=>{console.log(tasks)},[tasks])
 
-  useEffect(()=>{setCurrentTasks(tasks)},[tasks])
+  // useEffect(()=>{setCurrentTasks(tasks)},[tasks])
   
 
   return (
