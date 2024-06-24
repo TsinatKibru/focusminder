@@ -474,6 +474,7 @@ import { CgAdd } from "react-icons/cg";
 import dynamic from 'next/dynamic';
 import { updateTaskCategory } from "../actions/taskActions";
 import { useFilter } from "../context/FilterContext";
+import { useCategories } from "../context/CategoriesContext";
 
 const CreateTask = dynamic(() => import("./CreateTask"), { ssr: true });
 
@@ -511,6 +512,7 @@ const Tasks: React.FC<TasksProps> = ({
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [currentTasks, setCurrentTasks] = useState(tasks);
   const { filter } = useFilter();
+  const {  selectedCategory } = useCategories();
 
   const handleSave = (task: Task) => {
     console.log("Task saved:", task);
@@ -557,7 +559,7 @@ const Tasks: React.FC<TasksProps> = ({
 
   useEffect(()=>{console.log(tasks)},[tasks])
 
-  // useEffect(()=>{setCurrentTasks(tasks)},[tasks])
+  useEffect(()=>{setCurrentTasks(tasks)},[filter,selectedCategory])
   
 
   return (
