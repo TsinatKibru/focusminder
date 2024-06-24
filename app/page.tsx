@@ -375,6 +375,7 @@ import Tasks from "./components/Tasks";
 import Loading from "./components/Loading";
 import { useFilter } from "./context/FilterContext";
 import { useCategories } from "./context/CategoriesContext";
+import { TouchBackend } from "react-dnd-touch-backend";
 
 const Home: React.FC = () => {
   const [tasks, setTasks] = useState<FormattedTasks>({
@@ -483,9 +484,10 @@ const Home: React.FC = () => {
 
   const completedCount = tasks.done.length;
   const totalCount = Object.values(tasks).reduce((acc, category) => acc + category.length, 0);
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isTouchDevice ? TouchBackend : HTML5Backend}>
       <div className="min-h-screen bg-slate-200 p-8">
         {loading ? (
           <Loading />
