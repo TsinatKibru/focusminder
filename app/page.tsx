@@ -444,10 +444,10 @@ const Home: React.FC = () => {
     switch (filter) {
       case "today":
         return {
-          todo: tasks.todo.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
-          nextAction: tasks.nextAction.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
-          doing: tasks.doing.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
-          done: tasks.done.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          todo: tasks.todo.filter(task => task.doitsomeday === false && task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          nextAction: tasks.nextAction.filter(task => task.doitsomeday === false && task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          doing: tasks.doing.filter(task => task.doitsomeday === false && task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          done: tasks.done.filter(task => task.doitsomeday === false && task.duedate?.split("T")[0] === today && filterByCategory(task)),
         };
       case "upcoming":
         return {
@@ -484,8 +484,8 @@ const Home: React.FC = () => {
     console.log("filter", filter, filteredTasks);
   }, [filter, filteredTasks]);
 
-  const completedCount = tasks.done.length;
-  const totalCount = Object.values(tasks).reduce((acc, category) => acc + category.length, 0);
+  const completedCount = filteredTasks.done.length;
+  const totalCount = Object.values(filteredTasks).reduce((acc, category) => acc + category.length, 0);
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   return (
