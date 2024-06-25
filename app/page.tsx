@@ -376,6 +376,8 @@ import Loading from "./components/Loading";
 import { useFilter } from "./context/FilterContext";
 import { useCategories } from "./context/CategoriesContext";
 import { TouchBackend } from "react-dnd-touch-backend";
+import { usePomodoro } from "./context/PomodoroContext";
+import { fetchPomodoroTime } from "./actions/taskActions";
 
 const Home: React.FC = () => {
   const [tasks, setTasks] = useState<FormattedTasks>({
@@ -387,6 +389,7 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const { filter } = useFilter();
   const { setCategories, selectedCategory } = useCategories();
+  const { setPomodoroTime } = usePomodoro();
 
   useEffect(() => {
     const fetchAndFormatTasks = async () => {
@@ -431,6 +434,19 @@ const Home: React.FC = () => {
     setLoading(false);
     return data;
   };
+
+  useEffect(() => {
+    const getPomodoroTime = async () => {
+      try {
+        const pomodoroTime = await fetchPomodoroTime();
+        setPomodoroTime(pomodoroTime);
+      } catch (error) {
+        console.error("Error fetching Pomodoro time in Home:", error);
+      }
+    };
+
+    getPomodoroTime();
+  }, [setPomodoroTime]);
 
   const filterTasks = (tasks: FormattedTasks, filter: string): FormattedTasks => {
     const today = new Date().toISOString().split("T")[0];

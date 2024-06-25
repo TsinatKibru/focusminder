@@ -161,6 +161,7 @@ import { ItemTypes } from './Constants';
 import { BsPlay } from 'react-icons/bs';
 import CountdownTimer from './CountdownTimer';
 import { FiArrowUpRight, FiCheckCircle, FiCheckSquare } from 'react-icons/fi';
+import { usePomodoro } from '../context/PomodoroContext';
 
 interface DraggableTaskProps {
   task: Task;
@@ -171,6 +172,7 @@ interface DraggableTaskProps {
 const DraggableTask: React.FC<DraggableTaskProps> = ({ task, category, onTaskDone }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [showTimer, setShowTimer] = useState(false);
+  const { pomodoroTime, setPomodoroTime } = usePomodoro();
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
@@ -221,7 +223,7 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({ task, category, onTaskDon
       )}
       {showTimer && (
         <div className='fixed'>
-          <CountdownTimer startMinutes={0.5} onClose={handleCloseTimer} onTimerEnd={handleTimerEnd} />
+          <CountdownTimer startMinutes={pomodoroTime } onClose={handleCloseTimer} onTimerEnd={handleTimerEnd} />
         </div>
       )}
     </div>

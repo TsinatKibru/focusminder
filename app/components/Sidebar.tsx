@@ -72,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
     <div
       ref={menuRef}
-      className={`fixed md:relative top-0 left-0 h-screen ease-in-out  transition-all duration-1000 md:duration-300 border-r-2 border-gray-400 md:border-none overflow-y-auto ${
+      className={`fixed md:relative top-0 left-0 h-screen ease-in-out  transition-all duration-1000 md:duration-300 border-r-2 border-gray-400 md:border-none overflow-y-auto overflow-x-hidden ${
         isHidden && isMobile
           ? "w-0"
           : !isMobile && isMinimized

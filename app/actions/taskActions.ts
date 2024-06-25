@@ -142,6 +142,10 @@ interface TaskFormData {
   category: string;
 }
 
+interface SettingFormData {
+  pomodoroTime: number;
+}
+
 export async function createTask(formData: TaskFormData) {
   const {
     taskName,
@@ -206,3 +210,71 @@ export async function updateTaskCategory(taskId: string, newCategory: string) {
       throw error; // Throw the error to be handled by the caller
     }
   }
+
+  export async function createOrUpdateSetting(formData: SettingFormData) {
+    const { pomodoroTime } = formData;
+  
+    if (pomodoroTime <= 0) {
+      return;
+    }
+  
+    const xataClient = getXataClient();
+    const { userId } = auth();
+  
+    const userid = userId;
+  
+    if (!userid) {
+      return;
+    }
+  
+    const settingData = {
+      pomodorotime: pomodoroTime,
+      userid,
+    };
+  
+    try {
+      // Check if the setting already exists for the user
+      const existingSetting = await xataClient.db.setting.filter({ userid }).getFirst();
+  
+      if (existingSetting) {
+        // Update the existing setting
+        const updatedSetting = await xataClient.db.setting.update(existingSetting.id, settingData);
+        console.log("Setting updated:", updatedSetting);
+        return { success: true, setting: updatedSetting };
+      } else {
+        // Create a new setting
+        const newSetting = await xataClient.db.setting.create(settingData);
+        console.log("Setting created:", newSetting);
+        return { success: true, setting: newSetting };
+      }
+    } catch (error) {
+      console.error("Error managing setting:", error);
+      throw error; // Throw the error to be handled by the caller
+    }
+  }
+
+  export async function fetchPomodoroTime() {
+    const xataClient = getXataClient();
+    const { userId } = auth();
+  
+    const userid = userId;
+  
+    if (!userid) {
+      return 25; // Default Pomodoro time if no user is authenticated
+    }
+  
+    try {
+      // Fetch the setting for the authenticated user
+      const setting = await xataClient.db.setting.filter({ userid }).getFirst();
+  
+      if (setting) {
+        return setting.pomodorotime;
+      } else {
+        return 25; // Default Pomodoro time if setting is not found
+      }
+    } catch (error) {
+      console.error("Error fetching Pomodoro time:", error);
+      throw error; // Throw the error to be handled by the caller
+    }
+  }
+  

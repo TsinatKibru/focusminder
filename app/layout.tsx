@@ -85,6 +85,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Nabar";
 import { FilterProvider } from "./context/FilterContext";
 import { CategoriesProvider } from "./context/CategoriesContext";
+import { PomodoroProvider } from "./context/PomodoroContext";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -110,6 +111,8 @@ export default function RootLayout({
     <ClerkProvider>
        <FilterProvider>
         <CategoriesProvider>
+        <PomodoroProvider>
+
         <html lang="en">
         <body className={inter.className}>
           <SignedIn>
@@ -139,6 +142,9 @@ export default function RootLayout({
           </SignedOut>
         </body>
       </html>
+          
+           </PomodoroProvider>
+     
 
         </CategoriesProvider>
 

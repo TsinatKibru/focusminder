@@ -589,8 +589,8 @@ const Tasks: React.FC<TasksProps> = ({
       </button>
      </div>
       <div className="flex flex-col md:flex-row ">
-        <div
-          className={`grid grid-cols-1 md:grid-cols-4 gap-2 w-full h-full  ${
+        <div 
+          className={`grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full h-full ${
             showCreateTask && "-mr-0 md:-ml-5"
           }`}
         >

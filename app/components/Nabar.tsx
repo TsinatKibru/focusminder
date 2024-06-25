@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [isNotMobile, setIsNotMobile] = useState<boolean>(false);
   const {user ,isLoaded} = useUser();
-  
+  const [activeLink, setActiveLink] = useState<string>('');
   useEffect(() => {
     const handleResize = () => {
       setIsNotMobile(window.innerWidth > 760);
@@ -167,20 +167,20 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
           ref={menuRef}
           className={`flex w-screen space-x-1 md:space-x-3 fixed md:relative left-0 md:left-auto top-20 mt-0.5 md:mt-0 md:top-auto opacity-75 bg-slate-300 overflow-x-auto `}
         >
-          <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400 bg-slate-400">
-            <Link href={"tasks"}>
+          
+            <Link  className={` flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400 ${activeLink === '/' ? 'bg-slate-400' : ''} `} onClick={() => setActiveLink('/')} href={"/"}>
               <FaTasks className="text-xl md:text-3xl  mb-0 md:mb-1" />
               <span className="text-sm">Tasks</span>
             </Link>
-          </div>
+          
           <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400">
             <FaChartBar className="text-xl md:text-3xl  mb-0 md:mb-1" />
             <span className="text-sm">Statistics</span>
           </div>
-          <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400">
+          <Link onClick={() => setActiveLink('settings')} href={'/settings'} className={`flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400 cursor-pointer ${activeLink === 'settings' ? 'bg-slate-400' : ''}`}>
             <FaCog className="text-xl md:text-3xl  mb-0 md:mb-1" />
             <span className="text-sm">Settings</span>
-          </div>
+          </Link>
           <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400">
             <FaVolumeUp className="text-xl md:text-3xl  mb-0 md:mb-1" />
             <span className="text-sm">Sound</span>

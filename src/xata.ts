@@ -18,6 +18,13 @@ const tables = [
       { name: "userid", type: "string", notNull: true, defaultValue: "null" },
     ],
   },
+  {
+    name: "setting",
+    columns: [
+      { name: "userid", type: "string", notNull: true, defaultValue: "null" },
+      { name: "pomodorotime", type: "int", notNull: true, defaultValue: "25" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -26,8 +33,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Task = InferredTypes["task"];
 export type TaskRecord = Task & XataRecord;
 
+export type Setting = InferredTypes["setting"];
+export type SettingRecord = Setting & XataRecord;
+
 export type DatabaseSchema = {
   task: TaskRecord;
+  setting: SettingRecord;
 };
 
 const DatabaseClient = buildClient();
