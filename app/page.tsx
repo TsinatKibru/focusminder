@@ -434,6 +434,8 @@ const Home: React.FC = () => {
 
   const filterTasks = (tasks: FormattedTasks, filter: string): FormattedTasks => {
     const today = new Date().toISOString().split("T")[0];
+    console.log("todaydate",today)
+    console.log("todo",tasks.todo)
 
     const filterByCategory = (task: Task) => {
       return selectedCategory === '' || task.project === selectedCategory;
@@ -442,10 +444,10 @@ const Home: React.FC = () => {
     switch (filter) {
       case "today":
         return {
-          todo: tasks.todo.filter(task => task.duedate === today && filterByCategory(task)),
-          nextAction: tasks.nextAction.filter(task => task.duedate === today && filterByCategory(task)),
-          doing: tasks.doing.filter(task => task.duedate === today && filterByCategory(task)),
-          done: tasks.done.filter(task => task.duedate === today && filterByCategory(task)),
+          todo: tasks.todo.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          nextAction: tasks.nextAction.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          doing: tasks.doing.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
+          done: tasks.done.filter(task => task.duedate?.split("T")[0] === today && filterByCategory(task)),
         };
       case "upcoming":
         return {
