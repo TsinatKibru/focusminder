@@ -480,9 +480,9 @@ const Home: React.FC = () => {
 
   const filteredTasks = filterTasks(tasks, filter);
 
-  useEffect(() => {
-    console.log("filter", filter, filteredTasks);
-  }, [filter, filteredTasks]);
+  // useEffect(() => {
+  //   console.log("filter", filter, filteredTasks);
+  // }, [filter, filteredTasks]);
 
   const completedCount = filteredTasks.done.length;
   const totalCount = Object.values(filteredTasks).reduce((acc, category) => acc + category.length, 0);

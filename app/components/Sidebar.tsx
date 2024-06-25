@@ -8,7 +8,9 @@ import {
   FaCalendarAlt,
   FaCalendarDay,
   FaClock,
+  FaFolderOpen,
   FaGraduationCap,
+  FaLayerGroup,
   FaList,
   FaPlus,
   FaSearch,
@@ -172,29 +174,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             </li>
           </ul>
           <hr />
-          {/* <ul className="space-y-4 ">
-            <li
-              className={`py-4   flex flex-col justify-center ${
-                isMinimized && !isMobile ? "items-center" : "items-stretch "
-              } `}
-            >
-              <div className="inline-block h-15 bg-gray-700 px-4 py-2 hover:bg-gray-700">
-                <FaGraduationCap className="mr-2 inline-block" />{" "}
-                <span className="inline-block">
-                  {" "}
-                  {(isMobile || !isMinimized) && "YT Channel"}
-                </span>
-              </div>
-              <div className="inline-block h-15 px-4 py-2 hover:bg-gray-700">
-                <FaGraduationCap className="mr-2 inline-block" />{" "}
-                {(isMobile || !isMinimized) && "University"}
-              </div>
-              <div className="inline-block  h-15 px-4 py-2 hover:bg-gray-700">
-                <FaGraduationCap className="mr-2 inline-block" />{" "}
-                {(isMobile || !isMinimized) && "Main"}
-              </div>
-            </li>
-          </ul> */}
+         
 
           <ul className=" ">
             {categories.map((category, index) => (
@@ -205,7 +185,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 } `}  onClick={() => setSelectedCategory(category)}
               >
                 <div className={`inline-block h-10 px-4 py-2 hover:bg-gray-700 ${category === selectedCategory && 'bg-gray-700' } `}>
-                  <FaGraduationCap className="mr-2 inline-block" />{" "}
+                  <FaFolderOpen className="mr-2 inline-block" />{" "}
                   {(isMobile || !isMinimized) && category}
                 </div>
                 
@@ -214,7 +194,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
             ))}
             <div onClick={() => setSelectedCategory('')} className={`inline-block h-10 ${isMobile || isMinimized && 'flex justify-center items-center '} w-full px-4 py-2 mt-2 hover:bg-gray-700 ${'' === selectedCategory && 'bg-gray-700' } `}>
-                  <FaGraduationCap className="mr-2 inline-block" />{" "}
+                  <FaLayerGroup className="mr-2 inline-block" />{" "}
                   {(isMobile || !isMinimized) && 'All Projects'}
                 </div>
           </ul>
