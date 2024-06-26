@@ -95,9 +95,10 @@ import {
 
 interface NavbarProps {
   toggleSidebar: () => void;
+  isMinimized: Boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
+const Navbar: React.FC<NavbarProps> = ({ toggleSidebar ,isMinimized}) => {
   const [isMenuHidden, setIsMenuHidden] = useState<boolean>(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const [isNotMobile, setIsNotMobile] = useState<boolean>(false);
@@ -143,6 +144,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMenuHidden]);
+
+  useEffect(()=>{console.log("isMenuHidden",isMinimized)},[isMinimized])
 
   return (
     <nav className="bg-slate-300 text-slate-950 brightness-105 flex justify-between items-center h-20 border-b-2 border-slate-600">
@@ -192,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
          
         </div>
       )}
-      {isLoaded && user && <div className="text-black  fixed right-4 md:right-60 mt-4 md:mt-0  justify-end  items-end "><UserButton afterSignOutUrl="/"/></div>}
+      {isLoaded && user && <div className={`text-black  fixed   mt-4 md:mt-0  justify-end  items-end ${isMinimized ? ' right-4 md:right-24'  : ' right-4 md:right-60' }   `}><UserButton afterSignOutUrl="/"/></div>}
 
      
     

@@ -89,19 +89,20 @@ const Settings: React.FC = () => {
   }, [setPomodoroTime]);
 
   return (
-    <div className="flex flex-col p-4 bg-white shadow-md rounded-md w-full">
+    <div className="flex flex-col p-4 bg-slate-200 shadow-md rounded-md w-full text-slate-800">
       <Link href="/" className="flex items-center text-blue-500 mb-4">
         <FaArrowLeft className="mr-2" />
         <span>Back</span>
       </Link>
       <h2 className="text-2xl font-bold mb-4">Settings</h2>
-      <div className="mb-4 flex justify-between">
+      <div className="mb-4 flex justify-between border-2 p-4 border-slate-300 border-">
         <label className="block text-lg font-medium text-gray-700 mb-2">Pomodoro Time (minutes)</label>
         <input
           type="number"
           value={inputValue}
+          color= 'red'
           onChange={handleInputChange}
-          className="w-20 px-3 py-2 border border-gray-300 rounded-md"
+          className="w-20 px-3 py-2 border border-slate-600 rounded-md appearance-auto"
         />
       </div>
       <button

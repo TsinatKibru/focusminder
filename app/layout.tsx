@@ -131,7 +131,7 @@ export default function RootLayout({
                 } transition-all duration-300`}
               >
                 <div className={`fixed z-20 h-20 w-full top-0`}>
-                  <Navbar toggleSidebar={toggleSidebar} />
+                  <Navbar toggleSidebar={toggleSidebar}  isMinimized={isMinimized} />
                 </div>
                 <div className="pt-20" >{children}</div>
               </div>
