@@ -84,12 +84,15 @@ const AudioPlayer: React.FC = () => {
         >
           <FontAwesomeIcon icon={isPlaying && currentSoundIndex === index ? faPause : faPlay} />
           <div className={`border-l-2 border-slate-${0} animate-pulse h-24 mx-2 `}></div>
-          <sound.icon className="text-xl" />
-          <span>{sound.name}</span>
+         <div className='flex justify-center'>
+         <sound.icon className="text-xl" />
+         <span>{sound.name}</span>
+         </div>
         </button>
       ))}
     </div>
   );
 };
+AudioPlayer.displayName = "AudioPlayer";
 
 export default AudioPlayer;
