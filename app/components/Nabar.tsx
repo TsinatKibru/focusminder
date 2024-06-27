@@ -184,10 +184,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar ,isMinimized}) => {
             <FaCog className="text-xl md:text-3xl  mb-0 md:mb-1" />
             <span className="text-sm">Settings</span>
           </Link>
-          <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400">
+          <Link onClick={() => setActiveLink('sounds')} href={'/sounds'} className={`flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400 cursor-pointer ${activeLink === 'sounds' ? 'bg-slate-400' : ''}`}>
             <FaVolumeUp className="text-xl md:text-3xl  mb-0 md:mb-1" />
             <span className="text-sm">Sound</span>
-          </div>
+            </Link>
           <div className="flex flex-col items-center md:py-3 md:px-5 py-2 px-3 hover:bg-slate-400">
             <FaRocket className="text-xl md:text-3xl mb-0 md:mb-1" />
             <span className="text-sm">Boost Productivity</span>

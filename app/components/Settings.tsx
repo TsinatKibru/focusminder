@@ -100,7 +100,6 @@ const Settings: React.FC = () => {
         <input
           type="number"
           value={inputValue}
-          color= 'red'
           onChange={handleInputChange}
           className="w-20 px-3 py-2 border border-slate-600 rounded-md appearance-auto"
         />
@@ -108,7 +107,7 @@ const Settings: React.FC = () => {
       <button
         disabled={loading}
         onClick={handleSave}
-        className={`px-4 py-2 bg-blue-500 text-white w-full md:w-1/6 rounded-md hover:bg-blue-700 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`px-4 py-2 bg-slate-500 text-white w-full md:w-1/6 rounded-md hover:bg-slate-700 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         {loading ? 'Saving...' : 'Save'}
       </button>

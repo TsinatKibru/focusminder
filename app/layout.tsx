@@ -80,12 +80,14 @@ import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nex
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Nabar";
 import { FilterProvider } from "./context/FilterContext";
 import { CategoriesProvider } from "./context/CategoriesContext";
 import { PomodoroProvider } from "./context/PomodoroContext";
+import useNetworkStatus from "./hooks/useNetworkStatus";
+import NetworkOffline from "./components/NetworkOffline";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -98,6 +100,7 @@ export default function RootLayout({
   const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>("all-time");
+  const { isOnline } = useNetworkStatus();
 
 
   const toggleSidebar = () => {
@@ -107,14 +110,19 @@ export default function RootLayout({
     setIsMinimized(!isMinimized);
   };
 
+  useEffect(()=>{
+    console.log("isOnline",isOnline)
+  },[isOnline])
+
   return (
-    <ClerkProvider>
+    <html lang="en">
+        <body className={inter.className}>
+      {isOnline ?  <ClerkProvider>
        <FilterProvider>
         <CategoriesProvider>
         <PomodoroProvider>
 
-        <html lang="en">
-        <body className={inter.className}>
+        
           <SignedIn>
             <div className="flex h-screen">
               <div className="h-screen fixed z-30 top-0 transition-all duration-300">
@@ -140,8 +148,7 @@ export default function RootLayout({
           <SignedOut>
             <RedirectToSignIn />
           </SignedOut>
-        </body>
-      </html>
+       
           
            </PomodoroProvider>
      
@@ -150,6 +157,10 @@ export default function RootLayout({
 
   
        </FilterProvider>
-    </ClerkProvider>
+    </ClerkProvider> : <NetworkOffline />}
+    </body>
+    </html>
+  
+   
   );
 }
