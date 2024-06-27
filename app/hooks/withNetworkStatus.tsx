@@ -1,24 +1,24 @@
-'use client';
-import React, { ReactNode } from 'react';
-import useNetworkStatus from '../hooks/useNetworkStatus';
-import NetworkOffline from '../components/NetworkOffline';
+// 'use client';
+// import React, { ReactNode } from 'react';
+// import useNetworkStatus from '../hooks/useNetworkStatus';
+// import NetworkOffline from '../components/NetworkOffline';
 
-interface WithNetworkStatusProps {
-  children: ReactNode;
-}
+// interface WithNetworkStatusProps {
+//   children: ReactNode;
+// }
 
-const withNetworkStatus = <P extends object>(
-  Component: React.ComponentType<P>
-) => {
-  return (props: P & WithNetworkStatusProps) => {
-    const { isOnline } = useNetworkStatus();
+// const withNetworkStatus = <P extends object>(
+//   Component: React.ComponentType<P>
+// ) => {
+//   return (props: P & WithNetworkStatusProps) => {
+//     const { isOnline } = useNetworkStatus();
 
-    if (!isOnline) {
-      return <NetworkOffline />;
-    }
+//     if (!isOnline) {
+//       return <NetworkOffline />;
+//     }
 
-    return <Component {...props} />;
-  };
-};
+//     return <Component {...props} />;
+//   };
+// };
 
-export default withNetworkStatus;
+// export default withNetworkStatus;
