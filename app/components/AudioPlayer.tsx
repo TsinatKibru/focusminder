@@ -10,12 +10,12 @@ const sounds = [
     icon: FaSpa,
   },
   {
-    url: 'https://archive.org/details/RelaxingSpaMusicCalmingMusicRelaxationMusicMeditationMusicInstrumentalMusic689/528Hz+-+Whole+Body+Regeneration+-+Full+Body+Healing++Emotional++Physical+Healing.mp3',
+    url: 'https://ia600805.us.archive.org/19/items/RelaxingSpaMusicCalmingMusicRelaxationMusicMeditationMusicInstrumentalMusic689/528Hz%20-%20Whole%20Body%20Regeneration%20-%20Full%20Body%20Healing%20%20Emotional%20%20Physical%20Healing.mp3',
     name: 'Body Healing',
     icon: FaHeart,
   },
   {
-    url: 'https://archive.org/details/RelaxingSpaMusicCalmingMusicRelaxationMusicMeditationMusicInstrumentalMusic689/Cafe+Music!!Jazz++Bossa+Nova+instrumental+Music!!Background+Music!!.mp3',
+    url: 'https://ia800805.us.archive.org/19/items/RelaxingSpaMusicCalmingMusicRelaxationMusicMeditationMusicInstrumentalMusic689/10000%20Hz%20Full%20Restore%E2%8E%AA2675%20Hz%20Pineal%20Gland%20Resonator%E2%8E%AA528%20Hz%20Miracle%20Tone%E2%8E%AAAdvanced%20Slow%20Shamanic%20Drum.mp3',
     name: 'Cafe Music Jazz',
     icon: FaCoffee,
   },
